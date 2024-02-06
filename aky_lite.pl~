@@ -6,7 +6,7 @@ high(f_sharp,1).
 high(prolog,1).
 high(c,1).
 high(asm,0).
-high(js,1).
+high(js,0).
 
 decl(ruby,0).
 decl(c_sharp,0).
