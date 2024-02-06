@@ -7,6 +7,7 @@ high(prolog,1).
 high(c,1).
 high(asm,0).
 high(js,1).
+high(new, 0).
 
 decl(ruby,0).
 decl(c_sharp,0).
@@ -17,6 +18,7 @@ decl(prolog,1).
 decl(c,0).
 decl(asm,0).
 decl(js,1).
+decl(new, 1).
 
 interpret(ruby,1).
 interpret(python,1).
@@ -27,6 +29,7 @@ interpret(c_plu_plus,0).
 interpret(c,0).
 interpret(asm,0).
 interpret(js,1).
+interpret(new, 0).
 
 oop(ruby,3).
 oop(c_sharp,3).
@@ -37,6 +40,7 @@ oop(prolog,1).
 oop(c,0).
 oop(asm,0).
 oop(js,2).
+oop(new, 0).
 
 cross(ruby,1).
 cross(python,1).
@@ -47,6 +51,7 @@ cross(asm,1).
 cross(c_sharp,0).
 cross(f_sharp,0).
 cross(js, 1).
+cross(new, 1).
 
 visual(c_sharp,3).
 visual(ruby,2).
@@ -57,6 +62,7 @@ visual(prolog,1).
 visual(c,0).
 visual(asm,0).
 visual(js,2).
+visual(new, 2).
 
 mobile(c_sharp,0).
 mobile(ruby,0).
@@ -67,6 +73,7 @@ mobile(prolog,0).
 mobile(c,0).
 mobile(asm,0).
 mobile(js,1).
+mobile(new, 1).
 
 question1(X1):-	write("Is your language high level?"),nl,
 				write("1. Yes"),nl,
