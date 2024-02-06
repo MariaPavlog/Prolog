@@ -91,3 +91,23 @@ b_s(X, Y):- mother(Z, X),mother(Z, Y), X \= Y.
 %b_s/1
 %b_s(+X)
 b_s(X):- b_s(X,Y), write(Y), nl, fail.
+
+%is X a daughter of Y.
+%daughter/2
+%daughter(+X, +Y)
+daughter(X, Y):- woman(X), parent(Y, X).
+
+%outputs daughter X.
+%daughter/1
+%daughter(+X)
+daughter(X):- woman(Y), parent(X,Y), write(Y), nl,fail.
+
+%is X the wife of Y.
+%wife/2
+%wife(+X,+Y)
+wife(X,Y):- woman(X), man(Y), parent(X,Z), parent(Y,Z).
+
+%outputs wife of X.
+%wife/1
+%wife(+X)
+wife(X):- man(X), woman(Y), wife(Y,X), write(Y).
