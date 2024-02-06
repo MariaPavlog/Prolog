@@ -111,3 +111,51 @@ wife(X,Y):- woman(X), man(Y), parent(X,Z), parent(Y,Z).
 %wife/1
 %wife(+X)
 wife(X):- man(X), woman(Y), wife(Y,X), write(Y).
+
+%is X the grandfather of Y,the fact base
+%grand_pa/2
+%grand_pa(+X, +Y)
+grand_pa(X, Y):- man(X), parent(X, Z), parent(Z, Y).
+
+%predicates only
+%add a predicate - is X a child of Y
+%child/2
+%child(+X, +Y)
+child(X,Y):-parent(Y,X).
+
+grand_pa(X, Y):- man(X), child(Z,X), child(Y, Z).
+
+%outputs all grandfathers X.
+%the fact base
+%grand_pas/1
+%grand_pas(+X)
+grand_pas(X):- man(Y), parent(Y, Z), parent(Z, X), write(Y), nl, fail.
+%predicates only
+grand_pas(X):- man(Y), child(Z,Y), child(X, Z), write(Y), nl, fail.
+
+%whether X and Y are grandmother and grandson or grandson and grandmother.
+% grand_ma_and_son/2
+% grand_ma_and_son(+X,+Y)
+% the fact base
+grand_ma_and_son(X,Y):- man(X), woman(Y), parent(Y, Z), parent(Z, X).
+grand_ma_and_son(X,Y):- man(Y), woman(X), parent(X, Z), parent(Z, Y).
+
+%predicates only
+grand_ma_and_son(X,Y):- man(X), woman(Y),child(Z,Y), child(X, Z).
+grand_ma_and_son(X,Y):- man(Y), woman(X),child(Z,X), child(Y, Z).
+
+%is X the nephew of Y.
+%nephew/2
+%nephew(+X, +Y)
+%the fact base
+nephew(X,Y):- man(X), parent(P, X), parent(G,Y), parent(G,P).
+%predicates only
+nephew(X,Y):- man(X), child(X,P), b_s(Y,P).
+
+% outputs all the nephews of X.
+%nephew/1
+%nephew(+X)
+%the fact base
+nephew(X):- parent(G,X), parent(G,P),man(G), parent(P,Y),man(Y), write(Y), nl,fail.
+%predicates only
+nephew(X):-b_s(X,P), child(Y,P), man(Y), write(Y), nl, fail.
