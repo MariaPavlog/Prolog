@@ -55,3 +55,19 @@ men:- man(X), write(X), nl,fail.
 
 %women/0
 women:- woman(X), write(X), nl,fail.
+
+%output of all children X
+%children/1
+%children(+X)
+children(X):-parent(X,Y), write(Y), nl,fail.
+
+%is X the mother of Y
+%mother/2
+%mother(+X,+Y)
+mother(X, Y):- parent(X, Y), woman(X).
+
+
+%outputs mom X
+%mother/1
+%mother(+X)
+mother(X):- parent(Y, X), woman(Y), write(Y).

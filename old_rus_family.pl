@@ -71,3 +71,23 @@ mother(X, Y):- parent(X, Y), woman(X).
 %mother/1
 %mother(+X)
 mother(X):- parent(Y, X), woman(Y), write(Y).
+
+%is X the brother of Y
+%brother/2
+%brother(+X,+Y)
+brother(X, Y) :-mother(Z, X),mother(Z, Y), X \== Y, man(X).
+
+%outputs all the brothers X
+%brother/1
+%brother(+X)
+brother(X):-brother(Y, X), write(Y), nl, fail.
+
+%whether X and Y are brother and sister or brothers or sisters
+%b_s/2
+%b_s(+X, +Y)
+b_s(X, Y):- mother(Z, X),mother(Z, Y), X \= Y.
+
+%outputs all X brothers or sisters
+%b_s/1
+%b_s(+X)
+b_s(X):- b_s(X,Y), write(Y), nl, fail.
