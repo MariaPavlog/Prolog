@@ -61,20 +61,20 @@ women:- woman(X), write(X), nl,fail.
 %children(+X)
 children(X):-parent(X,Y), write(Y), nl,fail.
 
-%is X the mother of Y
+%is X the mother of Y and find mom of Y
 %mother/2
-%mother(+X,+Y)
+%mother(?X,+Y)
 mother(X, Y):- parent(X, Y), woman(X).
 
 
 %outputs mom X
 %mother/1
 %mother(+X)
-mother(X):- parent(Y, X), woman(Y), write(Y).
+mother(X):- mother(Y,X), write(Y).
 
-%is X the brother of Y
+%is X the brother of Y and find bro of Y
 %brother/2
-%brother(+X,+Y)
+%brother(?X,+Y)
 brother(X, Y) :-mother(Z, X),mother(Z, Y), X \== Y, man(X).
 
 %outputs all the brothers X
@@ -82,9 +82,9 @@ brother(X, Y) :-mother(Z, X),mother(Z, Y), X \== Y, man(X).
 %brother(+X)
 brother(X):-brother(Y, X), write(Y), nl, fail.
 
-%whether X and Y are brother and sister or brothers or sisters
+%whether X and Y are brother and sister or brothers or sisters and find sis or bro of X
 %b_s/2
-%b_s(+X, +Y)
+%b_s(+X, ?Y)
 b_s(X, Y):- mother(Z, X),mother(Z, Y), X \= Y.
 
 %outputs all X brothers or sisters
@@ -102,9 +102,9 @@ daughter(X, Y):- woman(X), parent(Y, X).
 %daughter(+X)
 daughter(X):- woman(Y), parent(X,Y), write(Y), nl,fail.
 
-%is X the wife of Y.
+%is X the wife of Y and find wife of Y
 %wife/2
-%wife(+X,+Y)
+%wife(?X,+Y)
 wife(X,Y):- woman(X), man(Y), parent(X,Z), parent(Y,Z).
 
 %outputs wife of X.
@@ -118,9 +118,9 @@ wife(X):- man(X), woman(Y), wife(Y,X), write(Y).
 grand_pa(X, Y):- man(X), parent(X, Z), parent(Z, Y).
 
 %predicates only
-%add a predicate - is X a child of Y
+%add a predicate - is X a child of Y and find child of Y and find parent of X
 %child/2
-%child(+X, +Y)
+%child(?X, ?Y)
 child(X,Y):-parent(Y,X).
 
 grand_pa(X, Y):- man(X), child(Z,X), child(Y, Z).
