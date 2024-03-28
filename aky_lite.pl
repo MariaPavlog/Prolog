@@ -7,8 +7,8 @@ high(prolog,1).
 high(c,1).
 high(asm,0).
 high(js,1).
-high(new, 0).
-high(n0_c_sharp,1).
+high(1c, 1).
+high(dracon,1).
 
 decl(ruby,0).
 decl(c_sharp,0).
@@ -19,8 +19,8 @@ decl(prolog,1).
 decl(c,0).
 decl(asm,0).
 decl(js,1).
-decl(new, 1).
-decl(n0_c_sharp,0).
+decl(1c, 0).
+decl(dracon,1).
 
 interpret(ruby,1).
 interpret(python,1).
@@ -31,8 +31,8 @@ interpret(c_plu_plus,0).
 interpret(c,0).
 interpret(asm,0).
 interpret(js,1).
-interpret(new, 0).
-interpret(n0_c_sharp,0).
+interpret(1c, 0).
+interpret(dracon,0).
 
 oop(ruby,3).
 oop(c_sharp,3).
@@ -43,8 +43,8 @@ oop(prolog,1).
 oop(c,0).
 oop(asm,0).
 oop(js,2).
-oop(new, 0).
-oop(n0_c_sharp,3).
+oop(1c, 1).
+oop(dracon,0).
 
 cross(ruby,1).
 cross(python,1).
@@ -55,8 +55,8 @@ cross(asm,1).
 cross(c_sharp,0).
 cross(f_sharp,0).
 cross(js, 1).
-cross(new, 1).
-cross(n0_c_sharp,0).
+cross(1c, 1).
+cross(dracon,0).
 
 visual(c_sharp,3).
 visual(ruby,2).
@@ -67,8 +67,8 @@ visual(prolog,1).
 visual(c,0).
 visual(asm,0).
 visual(js,2).
-visual(new, 2).
-visual(n0_c_sharp,3).
+visual(1c, 1).
+visual(dracon,0).
 
 mobile(c_sharp,0).
 mobile(ruby,0).
@@ -79,31 +79,20 @@ mobile(prolog,0).
 mobile(c,0).
 mobile(asm,0).
 mobile(js,1).
-mobile(new, 1).
-mobile(n0_c_sharp,0).
+mobile(1c, 0).
+mobile(dracon,0).
 
-game(ruby, 0).
-game(c_plu_plus, 1).
-game(c,0).
-game(js,1).
-game(python,1).
-game(prolog,0).
-game(f_sharp,0).
-game(c_sharp,1).
-game(asm,0).
-game(n0_c_sharp,0).
-
-
-science(ruby,1).
-science(c_plu_plus,1).
-science(c,1).
-science(js,0).
-science(prolog,0).
-science(python,1).
-science(asm,0).
-science(c_sharp,0).
-science(f_sharp,0).
-science(n0_c_sharp,1).
+rus(c_sharp,0).
+rus(ruby,0).
+rus(python,0).
+rus(c_plu_plus,0).
+rus(f_sharp,0).
+rus(prolog,0).
+rus(c,0).
+rus(asm,0).
+rus(js,0).
+rus(1c, 1).
+rus(dracon,1).
 
 
 
@@ -146,19 +135,16 @@ question7(X7):-	write("Is your language for mobile phones?"),nl,
 				write("0. NO"),nl,
 				read(X7).
 
-question8(X8):-	write("Is it often used to create games and graphics applications?"),nl,
+question8(X8):-	write("Is it this programming language Russian?"),nl,
 				write("1. Yes"),nl,
 				write("0. NO"),nl,
 				read(X8).
 
-question9(X9):-	write("Is it often used in the field of scientific computing and engineering?"),nl,
-				write("1. Yes"),nl,
-				write("0. NO"),nl,
-				read(X9).
+
 
 
 pr:-	question1(X1),question2(X2),question3(X3),question4(X4),
 		question5(X5),question6(X6),question7(X7),question8(X8),question9(X9),
 		high(X,X1),decl(X,X2),interpret(X,X3),oop(X,X4),
-		cross(X,X5),visual(X,X6),mobile(X,X7),game(X,X8), science(X,X9),
+		cross(X,X5),visual(X,X6),mobile(X,X7),rus(X,X8), 
 		write(X).
