@@ -124,3 +124,24 @@ mult_cifr_down(N,CurX,X):-N>0,N1 is N // 10, mult_cifr_down(N1, CurX,X).
 nod(A,0,A):-!.
 nod(_,0,_):-!,fail.
 nod(A,B,C):-Ost is A mod B, nod(B,Ost,C).
+
+
+
+
+
+min_el([X], X).
+min_el([X,Y|T], Min) :- X =< Y,  min_el([X|T], Min).
+min_el([X,Y|T], Min) :-  X > Y,  min_el([Y|T], Min).
+
+
+% find_pred_min(List, Res):- min_el(List, Min), find_pred_min(List,Min,0,
+% 0,Res).
+%find_pred_min([H,Min|_],Min,K,K,H):!.
+% find_pred_min([Min|T],Min,CurK,K,Res):-K1 is K+1,
+% find_pred_min(T,Min,CurK,K1, Res).
+% find_pred_min([H|T],Min,CurK,K,Res):-not(T=[]),find_pred_min(T,Min,CurK,K,Res).
+%
+
+
+
+
