@@ -128,20 +128,38 @@ nod(A,B,C):-Ost is A mod B, nod(B,Ost,C).
 
 
 
-
+%min element
 min_el([X], X).
 min_el([X,Y|T], Min) :- X =< Y,  min_el([X|T], Min).
 min_el([X,Y|T], Min) :-  X > Y,  min_el([Y|T], Min).
 
+%find pred element for last min
+%find_pred_min/2
+%find_pred_min(+List,?Res)
+find_pred_min(List, Res):- min_el(List, Min), find_pred_min(List,Min,0,
+0,Res).
+find_pred_min([H,Min|T],Min,K,K,H):-T=[],!.
+ find_pred_min([Min|T],Min,CurK,K,Res):-K1 is K+1,
+ find_pred_min(T,Min,CurK,K1, Res).
+ find_pred_min([H|T],Min,CurK,K,Res):-not(T=[]),find_pred_min(T,Min,CurK,K,Res).
 
-% find_pred_min(List, Res):- min_el(List, Min), find_pred_min(List,Min,0,
-% 0,Res).
-%find_pred_min([H,Min|_],Min,K,K,H):!.
-% find_pred_min([Min|T],Min,CurK,K,Res):-K1 is K+1,
-% find_pred_min(T,Min,CurK,K1, Res).
-% find_pred_min([H|T],Min,CurK,K,Res):-not(T=[]),find_pred_min(T,Min,CurK,K,Res).
-%
+
+%find max element
+max_el([X], X).
+max_el([X,Y|T], Max) :- X >= Y,  max_el([X|T], Max).
+max_el([X,Y|T], Max) :-  X < Y,  max_el([Y|T], Max).
+
+%find elements between first max and second max
+%find_between_max/2
+%find_between_max(+List, ?Res).
+find_between_max(List,Res):- max_el(List, Max), find_between_max(List, Max,[],Res).
+find_between_max([Max|T],Max,Res1,Res):-find_two_max(T,Max,Res1,Res).
+find_between_max([H|T],Max,Res1,Res):-find_between_max(T,Max,Res1,Res).
+find_two_max([Max|_],Max,Res1,Res1):-!.
+
+ find_two_max([H|T],Max,Res1,Res):- append(Res1,[H],R), find_two_max(T,Max, R, Res).
 
 
 
+find_count_b_min(List,Res):-min_el(List,Min),find_count(List,List1,Min,0,Res).
 
