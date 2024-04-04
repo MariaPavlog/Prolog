@@ -161,5 +161,28 @@ find_two_max([Max|_],Max,Res1,Res1):-!.
 
 
 
-find_count_b_min(List,Res):-min_el(List,Min),find_count(List,List1,Min,0,Res).
+
+
+%find the position of the first minimal element
+position_min([Min|_], Min, 0).
+position_min([H|T], Min, Pos) :-
+    position_min(T, Min, Pos1),
+    Pos is Pos1 + 1.
+
+% find the position of the last minimal element
+last_position_min(List, Min, Pos) :-
+    reverse(List, Reversed),
+    position_min(Reversed, Min, Pos1),
+    length(List, Len),
+    Pos is Len - Pos1 - 1.
+
+%find the number of elements between the first and the last minimum
+%count_between_min/2
+%count_between_min(+List,?Count)
+count_between_min(List, Count) :-
+    min_el(List, Min),
+    position_min(List, Min, FirstPos),
+    last_position_min(List, Min, LastPos),
+    Count is (LastPos-FirstPos)  - 1.
+
 
