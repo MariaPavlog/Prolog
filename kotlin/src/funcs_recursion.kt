@@ -23,8 +23,16 @@ class funcs_recursion {
     //НОД 2х чисел
     fun nodDown(a: Int, b:Int, c: Int): Int = if(c==1) 1 else if(a%c==0&&b%c==0) c else nodDown(a,b,c-1)
 
+    //ФУНКЦИЯ ВЫСШЕГО ПОРЯДКА
+    //минимум
+    fun min(a: Int, b: Int): Int = if(a<b)a else b
+    //максимум
+    fun max(a:Int, b: Int): Int=if(a>b) a else b
+
+    fun compareDig(n: Int, cur:Int, operation:(Int,Int)->Int): Int= if(n==0) cur else compareDig(n/10,operation(n%10,cur), operation )
+
     fun main() {
-        println("1. Рекурсия вверх\n2.Рекурсия вниз")
+        println("1. Рекурсия вверх\n2.Рекурсия вниз\n 0.сравнение")
         val scanner = Scanner(`in`)
         val n: Int = scanner.nextInt()
         println("1. Минимальная цифра числа\n2. Произведение цифр не делящихся на 5\n3. НОД 2х чисел")
@@ -46,7 +54,18 @@ class funcs_recursion {
                 val dig2: Int = scanner.nextInt()
                 println( nodDown(dig,dig2,dig))
             }
+
         }
+        when(n){
+            0->{
+                println("максимальная цифра")
+                println(compareDig(dig,-1,::max))
+                println("минимальная цифра")
+                println(compareDig(dig,10,::min))
+            }
+        }
+
+
 
     }
 }
