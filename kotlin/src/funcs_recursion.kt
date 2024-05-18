@@ -29,10 +29,11 @@ class funcs_recursion {
     //максимум
     fun max(a:Int, b: Int): Int=if(a>b) a else b
 
+    fun pow5(n: Int, cur:Int): Int= if(n==0 || n==5) cur else cur*n
     fun compareDig(n: Int, cur:Int, operation:(Int,Int)->Int): Int= if(n==0) cur else compareDig(n/10,operation(n%10,cur), operation )
 
     fun main() {
-        println("1. Рекурсия вверх\n2.Рекурсия вниз\n 0.сравнение")
+        println("1. Рекурсия вверх\n2.Рекурсия вниз\n 0.высшего порядка")
         val scanner = Scanner(`in`)
         val n: Int = scanner.nextInt()
         println("1. Минимальная цифра числа\n2. Произведение цифр не делящихся на 5\n3. НОД 2х чисел")
@@ -62,6 +63,8 @@ class funcs_recursion {
                 println(compareDig(dig,-1,::max))
                 println("минимальная цифра")
                 println(compareDig(dig,10,::min))
+                println("произведение не делящихся на 5")
+                println(compareDig(dig,1,::pow5))
             }
         }
 
